@@ -1,9 +1,11 @@
 class ThaiIdValidator {
   String personalId;
   String errorMessage;
+  String emptyError = "";
   String lengthError = "";
 
-  ThaiIdValidator({this.personalId, this.errorMessage, this.lengthError});
+  ThaiIdValidator(
+      {this.personalId, this.errorMessage, this.emptyError, this.lengthError});
 
   static clean(String personalId) {
     return personalId.trim().replaceAll('-', '');
@@ -15,11 +17,16 @@ class ThaiIdValidator {
   }
 
   String validate(String personalId) {
-    if (personalId.length != 17) {
-      if (errorMessage != null) {
-        return errorMessage;
-      } else {
+    if (personalId.length < 1) {
+      return emptyError;
+    } else {
+      if (personalId.length != 17) {
         return lengthError;
+        // if (errorMessage != null) {
+        //   return errorMessage;
+        // } else {
+        //   return lengthError;
+        // }
       }
     }
 
