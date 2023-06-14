@@ -1,22 +1,22 @@
 class ThaiIdValidator {
-  String personalId;
-  String errorMessage;
-  String emptyError = "";
-  String lengthError = "";
+  var personalId = "";
+  var errorMessage = "";
+  var emptyError = "";
+  var lengthError = "";
 
   ThaiIdValidator(
       {this.personalId, this.errorMessage, this.emptyError, this.lengthError});
 
-  static clean(String personalId) {
+  static clean(var personalId) {
     return personalId.trim().replaceAll('-', '');
   }
 
-  static String validateNow(String personalId, {String errorMessasge}) {
+  static String validateNow(var personalId, {var errorMessasge}) {
     ThaiIdValidator validator = ThaiIdValidator(errorMessage: errorMessasge);
     return validator.validate(personalId);
   }
 
-  String validate(String personalId) {
+  String validate(var personalId) {
     if (personalId.length < 1) {
       return emptyError;
     } else {
