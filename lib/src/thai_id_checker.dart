@@ -1,8 +1,8 @@
 class ThaiIdValidator {
-  var personalId = "";
-  var errorMessage = "";
-  var emptyError = "";
-  var lengthError = "";
+  int? personalId;
+  String? errorMessage = "";
+  String? emptyError = "";
+  String? lengthError = "";
 
   ThaiIdValidator(
       {this.personalId, this.errorMessage, this.emptyError, this.lengthError});
@@ -11,17 +11,17 @@ class ThaiIdValidator {
     return personalId.trim().replaceAll('-', '');
   }
 
-  static String validateNow(var personalId, {var errorMessasge}) {
+  static String validateNow(String personalId, {String? errorMessasge}) {
     ThaiIdValidator validator = ThaiIdValidator(errorMessage: errorMessasge);
     return validator.validate(personalId);
   }
 
   String validate(var personalId) {
     if (personalId.length < 1) {
-      return emptyError;
+      return emptyError!;
     } else {
       if (personalId.length != 17) {
-        return lengthError;
+        return lengthError!;
         // if (errorMessage != null) {
         //   return errorMessage;
         // } else {
@@ -65,10 +65,10 @@ class ThaiIdValidator {
 
     // let's validate
     if (checkingValue == lastDigit) {
-      return null;
+      return null!;
     } else {
       if (errorMessage != null) {
-        return errorMessage;
+        return errorMessage!;
       } else {
         return 'Incorrect Thai Personal ID. The Number is not correct';
       }
